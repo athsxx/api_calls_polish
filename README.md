@@ -1,25 +1,11 @@
-# USPTO Patent Search Web Application
 
-A modern, user-friendly web interface for searching the United States Patent and Trademark Office (USPTO) Data Set API (DSAPI) enriched cited reference metadata. This application provides an intuitive three-panel interface that mimics the official USPTO Patent Public Search tool, allowing users to search, view, select, download, and print patent information.
-
-## 🚀 Features
-
-- **Intuitive Search Interface**: Three-panel layout with search, results, and document viewer
-- **Multi-Keyword Search**: Support for up to 5 keywords with AND/OR boolean operators
-- **Interactive Results Table**: View results in a sortable table format with Document ID, Publication Date, and Title
-- **Document Viewer**: Click any result to view full patent details in the right panel
-- **Selection & Export**: Select multiple results and download them as JSON or print them
-- **Real-time Search**: Fast, asynchronous API calls to the USPTO DSAPI
-- **Responsive Design**: Works on desktop and mobile devices
-- **SSL Support**: Handles SSL certificate verification for secure API connections
-
-## 📋 Prerequisites
+##  Prerequisites
 
 - Python 3.8 or higher
 - pip (Python package manager)
 - Modern web browser (Chrome, Firefox, Safari, or Edge)
 
-## 🛠️ Installation
+## Installation
 
 ### 1. Clone or Download the Project
 
@@ -46,7 +32,7 @@ This will install:
 - `flask>=3.0.0` - Web framework
 - `aiohttp>=3.9.0` - Asynchronous HTTP client for API calls
 
-## 🚀 Running the Application
+## Running the Application
 
 ### Start the Flask Server
 
@@ -152,7 +138,7 @@ api_calls_polish/
 └── uspto_dsapi_search.py       # Standalone CLI script (optional)
 ```
 
-## 🔌 API Information
+##  API Information
 
 This application uses the **USPTO Data Set API (DSAPI)** for enriched cited reference metadata:
 
@@ -172,7 +158,7 @@ The API supports searching across 22 fields including:
 - `countryCode` - Country code
 - And 16 more fields...
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### SSL Certificate Errors
 
@@ -205,7 +191,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### Changing Default Search Limit
 
@@ -222,29 +208,7 @@ Edit `app.py` line 157:
 ```python
 app.run(debug=True, host='0.0.0.0', port=5000)  # Change port number
 ```
-
-## 📝 Example Searches
-
-### Medical Patents
-```
-Query: adenocarcinoma benign treatment
-Operator: AND
-Expected: ~40,000 results
-```
-
-### Technology Search
-```
-Query: semiconductor detector
-Operator: AND
-```
-
-### Inventor Search
-```
-Query: Smith Johnson
-Operator: OR
-```
-
-## 🛡️ Security Notes
+## Security Notes
 
 - The application runs in debug mode by default (for development)
 - SSL certificate verification is disabled for the USPTO API connection
@@ -254,25 +218,18 @@ Operator: OR
   - Implementing proper SSL/TLS certificates
   - Adding authentication if needed
 
-## 📄 License
+## License
 
 This project is provided as-is for educational and research purposes. Please refer to the USPTO's terms of service for API usage guidelines.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **USPTO** - For providing the Data Set API
 - **Flask** - Web framework
 - **aiohttp** - Asynchronous HTTP client
 
-## 📞 Support
 
-For issues or questions:
-1. Check the troubleshooting section above
-2. Review the USPTO API documentation
-3. Check browser console for JavaScript errors
-4. Verify all dependencies are installed correctly
-
-## 🔄 Updates
+## Updates
 
 To update dependencies:
 
