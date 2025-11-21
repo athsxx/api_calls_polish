@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USPTO Patent Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Left Column: Search and Results -->
+        <div class="left-column">
+            <!-- Top Panel: Search Input -->
+            <div class="search-panel">
+                <div class="search-form">
+                    <div class="form-group">
+                        <label>Enter Query Text:</label>
+                        <input type="text" id="query-text" class="query-input" placeholder="Enter search keywords...">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="operator">Default Operator:</label>
+                            <select id="operator" class="form-control">
+                                <option value="AND">AND</option>
+                                <option value="OR">OR</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="highlights">Highlights:</label>
+                            <select id="highlights" class="form-control">
+                                <option value="single">Single Color</option>
+                                <option value="multi">Multiple Colors</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" id="show-errors" checked> Show Errors</label>
+                        <label><input type="checkbox" id="plurals" checked> Plurals</label>
+                        <label><input type="checkbox" id="british" checked> British Equivalents</label>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="clear-btn" class="btn btn-secondary">Clear</button>
+                        <button id="pn-btn" class="btn btn-secondary">PN</button>
+                        <button id="search-btn" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Panel: Search Results -->
+            <div class="results-panel" id="results-panel">
+                <div class="results-tabs">
+                    <button class="tab active" data-tab="results">Search Results</button>
+                    <button class="tab" data-tab="help">Help</button>
+                    <button class="tab" data-tab="history">Search History</button>
+                </div>
+
+                <div class="results-toolbar">
+                    <button id="print-btn" class="toolbar-btn" title="Print" disabled>🖨️ Print</button>
+                    <button id="download-btn" class="toolbar-btn" title="Download" disabled>⬇️ Download</button>
+                    <button id="select-all-results" class="toolbar-btn" title="Select All">☑️ Select All</button>
+                    <input type="text" id="find-within" class="find-input" placeholder="Find within results...">
+                </div>
+
+                <div id="results-info" class="results-info"></div>
+                
+                <div class="results-table-container">
+                    <table class="results-table" id="results-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="select-all-checkbox"></th>
+                                <th>#</th>
+                                <th>Document ID</th>
+                                <th>Date Pub</th>
+                                <th>Title</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Document Viewer -->
+        <div class="right-column">
+            <div class="document-viewer" id="document-viewer">
+                <div class="viewer-header">
+                    <h3>Document Viewer</h3>
+                    <button id="close-viewer" class="close-btn">×</button>
+                </div>
+                <div class="viewer-toolbar">
+                    <button class="viewer-btn" title="Previous">◀</button>
+                    <button class="viewer-btn" title="Next">▶</button>
+                    <button class="viewer-btn" title="Zoom In">🔍+</button>
+                    <button class="viewer-btn" title="Zoom Out">🔍-</button>
+                    <button class="viewer-btn" title="Print">🖨️</button>
+                    <button class="viewer-btn" title="Save">💾</button>
+                    <span class="doc-counter" id="doc-counter">Doc 0</span>
+                </div>
+                <div class="viewer-content" id="viewer-content">
+                    <p class="placeholder-text">Select a document from the results to view details</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading-overlay hidden">
+        <div class="spinner"></div>
+        <p>Searching patents...</p>
+    </div>
+
+    <div id="error-panel" class="error-panel hidden">
+        <h3>❌ Error</h3>
+        <p id="error-message"></p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
